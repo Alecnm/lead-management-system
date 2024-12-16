@@ -7,7 +7,6 @@ services:
       - "8000:80"
     volumes:
       - .:/var/www/html
-    command: bash -c "./init.sh && apache2-foreground"
     environment:
       - APP_ENV=development
     networks:

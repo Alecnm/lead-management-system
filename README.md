@@ -49,9 +49,21 @@ cp .env.example .env
  ```
 ### 3. Run the Application with Docker:
 ```bash
-docker-compose up --build
+docker-compose up --build -d
  ```
-### 4. Access the Application:
+### 4. Access the container:
+```bash
+docker-compose exec app bash
+ ```
+### 5. Install dependencies (inside the container):
+```bash
+composer install --prefer-dist --no-scripts --no-progress
+```
+### 6. Run migrations (inside the container):
+```bash
+vendor/bin/phinx migrate
+```
+### 7. Access the Application:
 ```bash
 Open http://localhost:8000 in your browser to use the application
  ```
@@ -62,3 +74,5 @@ Open http://localhost:8000 in your browser to use the application
 - repeat
 
 During this process it will be trying to notify that the creation was successful to the provided endpoint. And saving the logs with the error messages in the /logs folder.
+
+### Demo
