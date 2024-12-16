@@ -45,7 +45,7 @@ cd lead-management-system
  ```
 ### 2. Copy the .env.example file and customize it:
 ```bash
-cp .env.example .env
+cp .env.example .env (or "copy .env.example .env" for windows)
  ```
 ### 3. Run the Application with Docker:
 ```bash
@@ -76,3 +76,6 @@ Open http://localhost:8000 in your browser to use the application
 During this process it will be trying to notify that the creation was successful to the provided endpoint. And saving the logs with the error messages in the /logs folder.
 
 ### Demo
+https://youtu.be/Keohv9txz6k
+
+[![Demo](https://img.youtube.com/vi/Keohv9txz6k/0.jpg)](https://youtu.be/Keohv9txz6k)
