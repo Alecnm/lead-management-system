@@ -63,7 +63,13 @@ class LeadsController extends BaseController
         }
 
         // Save to database (example only, use a model/service in real apps)
-        $leadId = $this->leadsModel->create($data);
+        try {
+            $leadId = $this->leadsModel->create($data);
+        } catch (\Exception $e) {
+            // Handle database error
+            $errorMessage = urlencode($e->getMessage());
+            return $response->withHeader('Location', "/leads/failure?message={$errorMessage}")->withStatus(302);
+        }
 
         if (!$leadId) {
             // Handle database error
@@ -94,7 +100,8 @@ class LeadsController extends BaseController
 
     public function failure(Request $request, Response $response, array $args): Response
     {
-        return $this->view->render($response, 'leads/failure.twig');
+        $message = $request->getQueryParams()['message'] ?? 'An error occurred.';
+        return $this->view->render($response, 'leads/failure.twig', ['message' => $message]);
     }
 
     public function defaultAction(Request $request, Response $response, array $args): Response

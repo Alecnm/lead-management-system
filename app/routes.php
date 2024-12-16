@@ -18,4 +18,5 @@ return function (App $app) {
     $app->get('/leads', [LeadsController::class, 'showForm']);
     $app->post('/leads', [LeadsController::class, 'create']);
     $app->get('/leads/success', [LeadsController::class, 'success']);
+    $app->get('/leads/failure', [LeadsController::class, 'failure']);
 };

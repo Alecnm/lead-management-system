@@ -32,7 +32,7 @@ class ExternalNotifier
         $url = 'marketing-webhooks';
         $attempts = 0;
 
-        while ($attempts < $_ENV['EXTERNAL_API_MAX_RETRIES'] ?? 3) {
+        while ($attempts < $_ENV['NOTIFY_MAX_RETRIES'] ?? 3) {
             try {
                 $this->client->post($url, [
                     'json' => $data,
@@ -50,7 +50,7 @@ class ExternalNotifier
                     'data' => $data,
                 ]);
 
-                sleep($_ENV['EXTERNAL_API_RETRY_DELAY'] ?? 2);
+                sleep($_ENV['NOTIFY_RETRY_DELAY'] ?? 2);
             }
         }
 

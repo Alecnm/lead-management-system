@@ -51,11 +51,7 @@ cp .env.example .env
 ```bash
 docker-compose up --build
  ```
-### 4. Run Migrations:
-```bash
-docker exec -it lead-management-app vendor/bin/phinx migrate
- ```
-### 5. Access the Application:
+### 4. Access the Application:
 ```bash
 Open http://localhost:8000 in your browser to use the application
  ```
