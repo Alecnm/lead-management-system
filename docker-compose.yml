@@ -1,18 +1,18 @@
-version: '3.7'
-
-volumes:
-    logs:
-        driver: local
-
 services:
-    slim:
-        image: php:7-alpine
-        working_dir: /var/www
-        command: php -S 0.0.0.0:8080 -t public
-        environment:
-            docker: "true"
-        ports:
-            - "8080:8080"
-        volumes:
-            - .:/var/www
-            - logs:/var/www/logs
+  app:
+    build: .
+    depends_on:
+      - db
+    ports:
+      - "8000:80"
+    volumes:
+      - .:/var/www/html
+    environment:
+      - APP_ENV=development
+  db:
+    image: mysql:8
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: leads_db
+    ports:
+      - "3306:3306"
